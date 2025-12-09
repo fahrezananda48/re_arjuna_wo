@@ -75,7 +75,7 @@ class KatalogController extends Controller
         try {
 
             $bookings = Booking::whereDate('tanggal_acara', $data['tanggal_acara'])->get();
-            if ($bookings->count() >= 1) {
+            if ($bookings->count() >= 2) {
                 return response()->json([
                     'success' => false,
                     'message' => 'Tanggal sudah penuh!'
