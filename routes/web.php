@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin;
 use App\Http\Controllers\User;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
 
 // Routing User
@@ -179,3 +180,12 @@ Route::prefix('admin')
 
         Route::get('/logout', [Admin\AuthController::class, 'logout'])->name('logout');
     });
+
+
+
+Route::post('/midtrans/webhook', function () {
+    $input = json_decode(file_get_contents('php://input'), true);
+
+    Log::info(json_encode($input, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+    return response()->json('ok');
+});

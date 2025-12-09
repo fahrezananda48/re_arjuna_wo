@@ -13,6 +13,7 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware): void {
         $middleware->trustProxies('*');
+        $middleware->validateCsrfTokens(['/midtrans/*']);
         $middleware->redirectGuestsTo('/login');
         $middleware->redirectUsersTo(function () {
             $role = request()->user()->role;
