@@ -1,0 +1,274 @@
+.button-link-navbar {
+    background-color: var(--accent-color) !important;
+    padding: 0.4rem !important;
+    border-radius: 0.2rem !important;
+    color: var(--surface-color) !important;
+}
+
+.nav-link {
+    color: var(--heading-color) !important;
+}
+
+.nav-link.active {
+    background-color: var(--accent-color) !important;
+    color: var(--background-color) !important;
+}
+
+.card-katalog {
+    background-color: var(--background-color) !important;
+    min-height: 500px;
+    max-height: 700px;
+    border-radius: 0.6rem;
+    box-shadow: 0 8px 9px 8px rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+}
+
+.card-katalog:hover {
+    transition: all ease-in-out;
+}
+
+.card-katalog .katalog-img {
+    border-top-left-radius: 0.6rem;
+    border-top-right-radius: 0.6rem;
+    min-height: 350px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.35s ease;
+}
+
+.card-katalog .katalog-img:hover {
+    transform: scale(1.06);
+}
+
+.card-katalog .katalog-body {
+    padding: 0.8rem;
+    min-height: 230px;
+}
+
+.card-katalog .katalog-body a h5 {
+    margin-bottom: 0.3rem;
+}
+
+.card-katalog .katalog-body a h5:hover {
+    color: var(--accent-color) !important;
+}
+
+.card-katalog .katalog-body p {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    /* jumlah baris */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.card-katalog .katalog-footer {
+    display: flex;
+    padding: 0.8rem;
+    width: 100%;
+
+}
+
+.harga-asli {
+    text-decoration: line-through;
+    margin-bottom: -2px;
+}
+
+div.col-12.col-md-4 {
+    margin-top: 1.4rem !important;
+    margin-bottom: 1.4rem !important;
+}
+
+.katalog-detail {
+    display: flex;
+    flex-direction: column;
+    overflow: auto;
+    max-height: 120px;
+}
+
+.katalog-detail::-webkit-scrollbar {
+    display: none;
+}
+
+/* PAGINATION BS-5 */
+.pagination .page-item.active span.page-link {
+    background-color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+    color: var(--background-color) !important;
+}
+
+.pagination .page-item a.page-link {
+    color: var(--accent-color) !important;
+}
+
+.katalog-diskon-badge {
+    position: absolute;
+    top: 80px;
+    right: -60px;
+    /* biar diagonal tetap di tengah */
+    width: 160px;
+    text-align: center;
+    background-color: var(--accent-color);
+    color: var(--background-color);
+    padding: 6px 0;
+    font-weight: 600;
+    font-size: 0.85rem;
+
+    transform: rotate(90deg);
+    /* transform-origin: left; */
+    border-radius: 4px;
+}
+
+.steps {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    width: 100%;
+    flex-direction: row;
+    /* Default: horizontal di laptop/desktop */
+    justify-content: center;
+}
+
+/* Mobile: ubah jadi tumpuk vertikal */
+@media (max-width: 576px) {
+    .steps {
+        flex-direction: column;
+        /* Tumpuk ke atas */
+        align-items: stretch;
+        /* Biar step-item melebar full */
+        gap: 0.4rem;
+        flex-wrap: wrap;
+    }
+
+    .steps .step-item {
+        width: 100%;
+    }
+}
+
+.steps .step-item {
+    padding: 8px 15px;
+    border-radius: 8px;
+    background: #e9ecef;
+    opacity: 0.6;
+    transition: 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 200px;
+}
+
+.steps .step-item i {
+    font-size: 24px;
+    font-weight: 900;
+    line-height: 10px;
+}
+
+.steps .step-item.active {
+    background: var(--accent-color);
+    color: white;
+    opacity: 1;
+}
+
+.btn-primary {
+    background-color: var(--accent-color) !important;
+    border-color: var(--accent-color) !important;
+}
+
+.alert-container {
+    position: fixed;
+    z-index: 999999;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    max-width: 480px;
+    pointer-events: none;
+    /* biar klik tetap ke alert aja */
+}
+
+.alert-container .alert {
+    pointer-events: auto;
+    /* alert tetap bisa di-close */
+}
+
+.container-midtrans {
+    margin-bottom: 1.4rem;
+}
+
+.katalog-detail-card {
+    background: #ffffff;
+    border-radius: 1rem;
+    transition: 0.3s ease;
+}
+
+.katalog-detail-card:hover {
+    transform: translateY(-3px);
+}
+
+.harga-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.harga-asli {
+    text-decoration: line-through;
+    color: #888;
+    font-size: 1.1rem;
+}
+
+.harga-diskon {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #28a745;
+}
+
+.include-list li {
+    margin-bottom: 4px;
+}
+
+/* Efek halus untuk gambar */
+.katalog-image-box img {
+    transition: 0.3s ease;
+}
+
+.katalog-image-box img:hover {
+    transform: scale(1.03);
+}
+
+.btn-fab-wrapper {
+    position: fixed;
+    bottom: 3.8rem;
+    right: 0.8rem;
+    border-radius: 8px;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--accent-color);
+    color: var(--surface-color);
+    z-index: 9999999;
+}
+
+.btn-fab-wrapper:hover {
+    cursor: pointer;
+}
+
+.btn-fab-keranjang {
+    position: relative;
+    color: var(--surface-color);
+}
+
+.icon-keranjang {
+    position: absolute;
+    top: -15px;
+    right: -10px;
+}
+
+.btn-fab-keranjang:hover {
+    background-color: var(--accent-color);
+    color: var(--surface-color);
+    cursor: pointer;
+}

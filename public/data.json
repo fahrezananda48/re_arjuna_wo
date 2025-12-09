@@ -1,0 +1,118 @@
+{
+    "beranda": {
+        "hero_section": {
+            "judul": "RE ARJUNA WEDDING",
+            "deskripsi": "deskripsi misan",
+            "gambar": "images/img-1.jpg"
+        },
+        "tentang_kami": {
+            "judul": "Tentang Kami",
+            "judul_isi": "jasdajsdlaslasldkasd",
+            "deskripsi_singkat": "isien dewe",
+            "deskripsi_lengkap": [
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia fuga repellendus, perferendis impedit suscipit deserunt quibusdam. Iste commodi soluta odit!",
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia fuga repellendus, perferendis impedit suscipit deserunt quibusdam. Iste commodi soluta odit!",
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia fuga repellendus, perferendis impedit suscipit deserunt quibusdam. Iste commodi soluta odit!",
+                "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia fuga repellendus, perferendis impedit suscipit deserunt quibusdam. Iste commodi soluta odit!"
+            ],
+            "gambar": "assets/img/about/about-square-8.webp"
+        }
+    },
+    "portofolio": {
+        "judul_utama": "Portofolio",
+        "deskripsi_singkat": "asdadasd",
+        "kategori": [
+            {
+                "filter": "mua",
+                "label": "MUA"
+            },
+            {
+                "filter": "dekor",
+                "label": "Dekor"
+            }
+        ],
+        "data_protofolio": [
+            {
+                "judul": "Pengantin 1",
+                "deskripsi_singkat": "Pengantin Adat jawa",
+                "id_filter": "mua",
+                "gambar": "images/pengantin.jpg",
+                "link_detail": "#"
+            },
+            {
+                "judul": "MUA",
+                "deskripsi_singkat": "muamuamua",
+                "id_filter": "mua",
+                "gambar": "assets/img/portfolio/portfolio-3.webp",
+                "link_detail": "#"
+            },
+            {
+                "judul": "MUA",
+                "deskripsi_singkat": "muamuamua",
+                "id_filter": "mua",
+                "gambar": "assets/img/portfolio/portfolio-3.webp",
+                "link_detail": "#"
+            },
+            {
+                "judul": "MUA",
+                "deskripsi_singkat": "muamuamua",
+                "id_filter": "mua",
+                "gambar": "assets/img/portfolio/portfolio-3.webp",
+                "link_detail": "#"
+            },
+            {
+                "judul": "MUA",
+                "deskripsi_singkat": "muamuamua",
+                "id_filter": "mua",
+                "gambar": "assets/img/portfolio/portfolio-3.webp",
+                "link_detail": "#"
+            },
+            {
+                "judul": "Dekor 1",
+                "deskripsi_singkat": "dekor dekor dekor",
+                "id_filter": "dekor",
+                "gambar": "assets/img/portfolio/portfolio-3.webp",
+                "link_detail": "#"
+            },
+            {
+                "judul": "Dekor 2",
+                "deskripsi_singkat": "dekor dekor dekor",
+                "id_filter": "dekor",
+                "gambar": "assets/img/portfolio/portfolio-3.webp",
+                "link_detail": "#"
+            },
+            {
+                "judul": "Dekor 3",
+                "deskripsi_singkat": "dekor dekor dekor",
+                "id_filter": "dekor",
+                "gambar": "assets/img/portfolio/portfolio-3.webp",
+                "link_detail": "#"
+            }
+        ]
+    },
+    "lainya": {
+        "footer": {
+            "no_telp": "0812345678",
+            "email": "example@gmail.com",
+            "alamat": "alamat e diganti yo nda",
+            "deskripsi_singkat_link_sosmed": "ganti",
+            "link_sosmed": [
+                {
+                    "provider": "instagram",
+                    "link": "#",
+                    "icon": "bi-instagram"
+                },
+                {
+                    "provider": "facebook",
+                    "link": "#",
+                    "icon": "bi-facebook"
+                },
+                {
+                    "provider": "whatsapp",
+                    "link": "#",
+                    "icon": "bi-whatsapp"
+                }
+            ]
+        }
+    }
+}
