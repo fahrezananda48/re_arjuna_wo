@@ -2,25 +2,25 @@
     "beranda": {
         "hero_section": {
             "judul": "RE ARJUNA WEDDING",
-            "deskripsi": "deskripsi",
-            "gambar": "images/img-1.jpg"
+            "deskripsi": "rearjuna_wedding adalah jasa rias profesional yang menghadirkan tampilan riasan elegan, lembut, dan menawan untuk berbagai momen spesial Anda. Dengan pengalaman dalam merias pengantin, keluarga, hingga acara formal, kami mengutamakan detail, ketahanan make-up, serta kenyamanan klien sepanjang acara.",
+            "gambar": "images/foto.jpg"
         },
         "tentang_kami": {
             "judul": "Tentang Kami",
-            "judul_isi": "jasdajsdlaslasldkasd",
-            "deskripsi_singkat": "isien dewe",
+            "judul_isi": "RE AR JUNA WEDDING",
+            "deskripsi_singkat": "WEDDING PROFESIONAL",
             "deskripsi_lengkap": [
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia fuga repellendus, perferendis impedit suscipit deserunt quibusdam. Iste commodi soluta odit!",
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia fuga repellendus, perferendis impedit suscipit deserunt quibusdam. Iste commodi soluta odit!",
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia fuga repellendus, perferendis impedit suscipit deserunt quibusdam. Iste commodi soluta odit!",
                 "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Mollitia fuga repellendus, perferendis impedit suscipit deserunt quibusdam. Iste commodi soluta odit!"
             ],
-            "gambar": "assets/img/about/about-square-8.webp"
+            "gambar": "images/ngantin.jpg"
         }
     },
     "portofolio": {
         "judul_utama": "Portofolio",
-        "deskripsi_singkat": "asdadasd",
+        "deskripsi_singkat": "Re_Arjuna Wedding",
         "kategori": [
             {
                 "filter": "mua",
@@ -92,10 +92,10 @@
     },
     "lainya": {
         "footer": {
-            "no_telp": "0812345678",
-            "email": "example@gmail.com",
-            "alamat": "alamat e diganti yo nda",
-            "deskripsi_singkat_link_sosmed": "ganti",
+            "no_telp": "089508455595",
+            "email": "rearjuna@.com",
+            "alamat": "Desa Plabuhan Kecamatan Plandaan Jombang",
+            "deskripsi_singkat_link_sosmed": "ikuti sosial media kami",
             "link_sosmed": [
                 {
                     "provider": "instagram",
