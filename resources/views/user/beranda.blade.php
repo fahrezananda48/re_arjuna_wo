@@ -98,7 +98,7 @@
 
 
                             <div class="cta-section" data-aos="fade-up" data-aos-delay="300">
-                                <a href="{{ route('user.tentang.index') }}" class="btn-link">Selengkapnya <i
+                                <a href="{{ route('user.tentang.index') }}" class="btn-link"> <i
                                         class="bi bi-arrow-right"></i></a>
                             </div>
                         </div>
@@ -107,7 +107,7 @@
 
                     <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
                         <div class="image-container">
-                            <img src="{{ asset('assets') }}/img/about/about-square-8.webp" alt="About Us" class="img-fluid">
+                            <img src="images/ngantin.jpg">
                         </div>
                     </div>
                 </div>
