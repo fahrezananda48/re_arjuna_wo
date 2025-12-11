@@ -29,7 +29,10 @@ Route::controller(User\KeranjangController::class)
         Route::get('/', 'index')->name('index');
         Route::delete('/hapus/{keranjang}', 'deleteItem')->name('remove');
         Route::get('/checkout', 'checkout')->name('checkout');
+        Route::get('/pembayaran/{booking}', 'pembayaran')->name('pembayaran');
+        Route::post('/store/booking', 'booking')->name('booking');
         Route::post('/checkout/proses', 'prosesCheckout')->name('checkout.proses');
+        Route::post('/keranjang/hitung', 'hitung')->name('hitung');
     });
 
 Route::controller(User\KatalogController::class)

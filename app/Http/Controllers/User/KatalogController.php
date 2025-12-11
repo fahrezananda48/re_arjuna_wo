@@ -68,7 +68,9 @@ class KatalogController extends Controller
             'tanggal_acara' => 'required|date',
             'nomor_telp_customer' => 'required',
             'alamat_lengkap_customer' => 'required',
+            'selected' => 'nullable'
         ]);
+        $selectedItem = json_decode($data['selected'], true);
 
         DB::beginTransaction(); // Mulai transaksi dari awal
 
@@ -84,23 +86,14 @@ class KatalogController extends Controller
 
             // Buat client baru
             $client = Client::updateOrCreate([
-                'nomor_telp_customer' => $data['nomor_telp_customer'],
+                'email' => Auth::user()->email
             ], [
                 'nama_customer' => $data['nama_cpp'] . '-' . $data['nama_cpw'],
                 'nomor_telp_customer' => $data['nomor_telp_customer'],
                 'alamat_lengkap_customer' => $data['alamat_lengkap_customer'],
             ]);
 
-            $booking = Booking::create([
-                'customer_id' => $client->id,
-                'nama_cpp' => $data['nama_cpp'],
-                'nama_cpw' => $data['nama_cpw'],
-                'nama_ayah' => $data['nama_ayah'],
-                'nama_ibu' => $data['nama_ayah'],
-                'tanggal_acara' => $data['tanggal_acara'],
-                'alamat' => $data['alamat_lengkap_customer'],
-                'nomor_telp' => $data['nomor_telp_customer'],
-            ]);
+
 
             // Ambil katalog
             $katalog = Katalog::findOrFail($data['id_katalog']);
@@ -138,6 +131,30 @@ class KatalogController extends Controller
                     'error'   => json_decode($snapToken->getResponse()->getBody()->getContents(), true)
                 ], 500);
             }
+            $booking = Booking::create([
+                'customer_id'      => $client->id,
+                'nama_cpp'         => $data['nama_cpp'],
+                'nama_cpw'         => $data['nama_cpw'],
+                'nama_ayah'        => $data['nama_ayah'],
+                'nama_ibu'         => $data['nama_ibu'],
+                'tanggal_acara'    => $data['tanggal_acara'],
+                'alamat'           => $data['alamat_lengkap_customer'],
+                'nomor_telp'       => $data['nomor_telp_customer'],
+                'total_pembayaran' => $harga,
+                'katalog_id'       => $katalog->id,
+                'detail_booking'   => [
+                    'detail_booking' => $selectedItem,
+                    'snap_token' => $snapToken['token']
+                ]
+            ]);
+            Transaksi::create([
+                'kode_transaksi'    => $inv,
+                'total_transaksi'   => $harga,
+                'detail_transaksi'  => [
+                    'snap_token' => $snapToken['token']
+                ],
+                'id_booking' => $booking->id
+            ]);
 
             // Jika sukses → commit
             DB::commit();
@@ -145,7 +162,8 @@ class KatalogController extends Controller
             return response()->json([
                 'success' => true,
                 'snap_token' => $snapToken,
-                'data_client' => $client
+                'data_client' => $client,
+                'id_booking' => $booking->id
             ]);
         } catch (\Exception $th) {
             DB::rollBack();
@@ -162,7 +180,7 @@ class KatalogController extends Controller
 
         $data = $request->all();
         $filtered = array_diff_key($data, array_flip([
-            'id_katalog',
+            'id_booking',
             'id_client',
             '_token'
         ]));
@@ -170,8 +188,7 @@ class KatalogController extends Controller
         try {
             DB::beginTransaction();
             $transaksi = Transaksi::create([
-                'katalog_id' => $data['id_katalog'],
-                'customer_id' => $data['id_client'],
+                'id_booking' => $data['id_booking'],
                 'kode_transaksi' => $data['order_id'],
                 'total_transaksi' => floatval($data['gross_amount']),
                 'status_transaksi' => convertStatusTransaksiMidtrans($data['transaction_status']),

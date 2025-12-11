@@ -13,8 +13,7 @@ return new class extends Migration
     {
         Schema::create('tbl_transaksi', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('katalog_id')->constrained('tbl_katalog')->onDelete('cascade');
-            $table->foreignId('customer_id')->constrained('tbl_customer')->onDelete('cascade');
+            $table->foreignId('id_booking')->constrained('tbl_booking')->onDelete('cascade');
             $table->string('kode_transaksi', 50);
             $table->float('total_transaksi');
             $table->enum('status_transaksi', [

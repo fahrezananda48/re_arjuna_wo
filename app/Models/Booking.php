@@ -16,5 +16,16 @@ class Booking extends Model
         'nomor_telp',
         'tanggal_acara',
         'customer_id',
+        'katalog_id',
+        'detail_booking',
+        'total_pembayaran',
     ];
+
+
+    protected function casts()
+    {
+        return [
+            'detail_booking' => 'array'
+        ];
+    }
 }

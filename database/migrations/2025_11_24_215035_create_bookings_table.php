@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tbl_booking', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->constrained('tbl_customer')->onDelete('cascade');
+            $table->foreignId('katalog_id')->constrained('tbl_katalog')->onDelete('cascade');
             $table->string('nama_cpp', 128);
             $table->string('nama_cpw', 128);
             $table->string('nama_ayah', 128);
@@ -21,6 +22,8 @@ return new class extends Migration
             $table->text('alamat');
             $table->string('nomor_telp', 20);
             $table->date('tanggal_acara');
+            $table->json('detail_booking')->nullable();
+            $table->float('total_pembayaran');
             $table->timestamps();
         });
     }

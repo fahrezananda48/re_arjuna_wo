@@ -259,7 +259,8 @@
                         tanggal_acara: tanggal_acara,
                         nomor_telp_customer: nomor_telp_customer,
                         alamat_lengkap_customer: alamat_lengkap_customer,
-                        id_katalog: idKatalog
+                        id_katalog: idKatalog,
+                        selected: urlSearchParams.get('selected')
                     },
                     beforeSend: () => {
                         $('#loaderStep1').removeClass('d-none')
@@ -274,6 +275,8 @@
                             url.searchParams.set('nama_client', res.data_client.nama_customer)
                             url.searchParams.set('no_client', res.data_client
                                 .nomor_telp_customer)
+                            url.searchParams.set('id_booking', res
+                                .id_booking)
                             window.history.replaceState({}, "", url)
                             goToStep(Number(url.searchParams.get('step')) + 1);
 
@@ -282,10 +285,8 @@
                                 onSuccess: async function(result) {
                                     let results = {
                                         ...result,
-                                        id_client: url.searchParams.get(
-                                            'id_client'),
-                                        id_katalog: url.searchParams.get(
-                                            'id_katalog'),
+                                        id_booking: res.id_booking,
+                                        id_client: res.data_client.id,
                                         _token: $('meta[name="csrf-token"]')
                                             .attr('content')
                                     }
@@ -302,6 +303,8 @@
                                     url.searchParams.set('total_pembayaran',
                                         gross_amount)
                                     url.searchParams.set('order_id', order_id)
+                                    url.searchParams.set('id_booking', res
+                                        .id_booking)
                                     window.history.replaceState({}, "", url)
                                     await webhookhandler(results);
                                     updateDetailInformasi()

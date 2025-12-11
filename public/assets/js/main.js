@@ -311,6 +311,18 @@
     }
     window.addEventListener("load", navmenuScrollspy);
     document.addEventListener("scroll", navmenuScrollspy);
+
+    function throttle(func, delay) {
+        let lastCall = 0;
+        return function (...args) {
+            const now = Date.now();
+            if (now - lastCall < delay) return;
+            lastCall = now;
+            return func(...args);
+        };
+    }
+
+    window.addEventListener("scroll", throttle(toggleScrolled, 100));
 })();
 function alertToast(type = "primary", msg = "") {
     const $container = $(".alert-container");
@@ -320,7 +332,7 @@ function alertToast(type = "primary", msg = "") {
 
     // set posisi alert tepat di bawah navbar
     $container.css({
-        top: headerHeight + 1000 + "px",
+        top: headerHeight + 10 + "px",
     });
 
     let alertHtml = `

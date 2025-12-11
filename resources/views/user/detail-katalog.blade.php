@@ -181,11 +181,14 @@
         });
 
         $('#bookingNow').on('click', function() {
+            const params = new URLSearchParams({
+                selected: JSON.stringify(selectedItems)
+            });
 
-            // Redirect dengan query parameter (atau bisa AJAX / form POST)
             window.location.href =
-                "{{ route('user.katalog.booking', ['id_katalog' => $katalog->id]) }}?selected=" + JSON.stringify(
-                    selectedItems);
+                "{{ route('user.katalog.booking', ['id_katalog' => $katalog->id]) }}" +
+                "&" + params.toString();
+
         });
         let savedSelections = localStorage.getItem('selected_items');
         if (savedSelections) {
