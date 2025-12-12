@@ -111,7 +111,9 @@ class KatalogController extends Controller
             "field_value" => "nullable",
             "field_value.*" => "nullable",
             "deskripsi_katalog" => "nullable",
-            "thumbnail_katalog" => "nullable|image|max:2048|mimes:png,jpg,jpeg,webp"
+            "thumbnail_katalog" => "nullable|image|max:2048|mimes:png,jpg,jpeg,webp",
+            "item_katalog" => "nullable",
+            "item_katalog.*" => "nullable",
         ]);
         try {
             if (isset($validated['thumbnail_katalog']) && is_null($validated['thumbnail_katalog'])) {

@@ -187,14 +187,15 @@ class KatalogController extends Controller
 
         try {
             DB::beginTransaction();
-            $transaksi = Transaksi::create([
-                'id_booking' => $data['id_booking'],
+            $transaksi = Transaksi::updateOrCreate([
                 'kode_transaksi' => $data['order_id'],
+            ], [
+                'id_booking' => $data['id_booking'],
                 'total_transaksi' => floatval($data['gross_amount']),
                 'status_transaksi' => convertStatusTransaksiMidtrans($data['transaction_status']),
                 'detail_transaksi' => $filtered,
             ]);
-            DB::commit();
+            // DB::commit();
             return response()->json([
                 'success' => true,
                 'transaksi' => $transaksi

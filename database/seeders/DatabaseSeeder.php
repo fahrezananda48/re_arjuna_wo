@@ -24,5 +24,11 @@ class DatabaseSeeder extends Seeder
             'password' => Hash::make('admin'),
             'role' => 'admin'
         ]);
+        User::create([
+            'nama' => 'Super Admin',
+            'email' => 'super-admin@rearjunawo.com',
+            'password' => Hash::make('superadmin'),
+            'role' => 'super_admin'
+        ]);
     }
 }

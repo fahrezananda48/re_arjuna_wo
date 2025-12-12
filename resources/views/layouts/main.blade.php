@@ -104,7 +104,7 @@
     </div>
 
     @if (Auth::check())
-        @if (Auth::user()->role !== 'admin')
+        @if (Auth::user()->role !== 'admin' && Auth::user()->role !== 'super_admin')
             <div class="btn-fab-wrapper">
                 <a href="{{ route('user.keranjang.index') }}" class="btn-fab-keranjang">
                     <div class="icon-keranjang">

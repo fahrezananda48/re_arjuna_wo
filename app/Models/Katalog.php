@@ -47,16 +47,24 @@ class Katalog extends Model
         if (!is_array($this->data_vendor)) {
             return [];
         }
+        $kategoriGaun = [
+            'gaun_pengantin_temu',
+            'gaun_pengantin_akad',
+            'gaun_pengantin_resepsi',
+        ];
 
         foreach ($this->data_vendor as $key => $ids) {
+            // default: nama class hasil konversi
+            $className = $this->formatTextToClass($key);
 
-            // ubah nama key jadi camelCase class
-            $className = $this->formatTextToClass($key); // ex: tenda => Tenda, gaun_pengantin => GaunPengantin
+            // kalau key termasuk kategori gaun, pakai model GaunPengantin
+            if (in_array($key, $kategoriGaun)) {
+                $className = 'GaunPengantin';
+            }
 
             $modelPath = "App\\Models\\" . $className;
 
             if (class_exists($modelPath)) {
-                // fetch data dari model berdasarkan id di array
                 $data[$key] = $modelPath::whereIn('id', $ids)->get();
             } else {
                 $data[$key] = [];

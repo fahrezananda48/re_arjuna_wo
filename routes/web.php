@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin;
+use App\Http\Controllers\Admin\MidtransWebhookController;
 use App\Http\Controllers\User;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Route;
@@ -8,14 +9,14 @@ use Illuminate\Support\Facades\Route;
 // Routing User
 Route::controller(User\BerandaController::class)
     ->as('user.beranda.')
-    ->middleware('web')
+    ->middleware(['web'])
     ->group(function () {
         Route::get('/', 'index')->name('index');
     });
 
 Route::controller(User\PortofolioController::class)
     ->as('user.portofolio.')
-    ->middleware('web')
+    ->middleware(['web'])
     ->prefix('portofolio')
     ->group(function () {
         Route::get('/', 'index')->name('index');
@@ -23,7 +24,7 @@ Route::controller(User\PortofolioController::class)
 
 Route::controller(User\KeranjangController::class)
     ->as('user.keranjang.')
-    ->middleware('web')
+    ->middleware(['web'])
     ->prefix('keranjang')
     ->group(function () {
         Route::get('/', 'index')->name('index');
@@ -37,7 +38,7 @@ Route::controller(User\KeranjangController::class)
 
 Route::controller(User\KatalogController::class)
     ->as('user.katalog.')
-    ->middleware('web')
+    ->middleware(['web'])
     ->prefix('katalog')
     ->group(function () {
         Route::get('/', 'index')->name('index');
@@ -51,7 +52,7 @@ Route::controller(User\KatalogController::class)
 
 Route::controller(User\AboutController::class)
     ->as('user.tentang.')
-    ->middleware('web')
+    ->middleware(['web'])
     ->prefix('tentang-kami')
     ->group(function () {
         Route::get('/', 'index')->name('index');
@@ -71,7 +72,7 @@ Route::controller(Admin\AuthController::class)
 
 // Route Admin
 Route::prefix('admin')
-    ->middleware('auth')
+    ->middleware(['auth', 'role:admin,super_admin,member'])
     ->as('admin.')
     ->group(function () {
         Route::controller(Admin\BerandaController::class)
@@ -91,6 +92,18 @@ Route::prefix('admin')
                 Route::post('/', 'store')->name('store');
                 Route::post('/{katalog}/update', 'update')->name('update');
                 Route::get('/{katalog}/destroy', 'destroy')->name('destroy');
+            });
+
+        Route::controller(Admin\BookingController::class)
+            ->as('booking.')
+            ->prefix('booking')
+            ->group(function () {
+                Route::get('/', 'index')->name('index');
+                Route::get('/tambah', 'create')->name('create');
+                Route::get('/{booking}', 'show')->name('show');
+                Route::post('/', 'store')->name('store');
+                Route::post('/{booking}/update', 'update')->name('update');
+                Route::get('/{booking}/destroy', 'destroy')->name('destroy');
             });
 
         Route::controller(Admin\CustomerController::class)
@@ -178,17 +191,9 @@ Route::prefix('admin')
                 Route::post('/{laporan}/update', 'update')->name('update');
                 Route::delete('/{laporan}/destroy', 'destroy')->name('destroy');
             });
-
-
-
-        Route::get('/logout', [Admin\AuthController::class, 'logout'])->name('logout');
     });
+Route::get('/logout', [Admin\AuthController::class, 'logout'])->name('admin.logout');
 
 
 
-Route::post('/midtrans/webhook', function () {
-    $input = json_decode(file_get_contents('php://input'), true);
-
-    Log::info(json_encode($input, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
-    return response()->json('ok');
-});
+Route::post('/midtrans/webhook', [MidtransWebhookController::class, 'handler']);

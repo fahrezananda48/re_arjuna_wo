@@ -32,19 +32,36 @@
                         <p class="text-muted mb-4">
                             {{ $katalog->deskripsi_katalog }}
                         </p>
+                        <div class="mb-4">
+                            <h5 class="fw-semibold mb-2">Include:</h5>
+                            <ul>
+                                @foreach ($katalog->item_array_katalog as $key => $in)
+                                    <li>{{ $in }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
 
                         <div class="mb-4">
                             <h5 class="fw-semibold mb-2">Pilih Item:</h5>
                             <div class="accordion" id="accordionExample">
                                 @foreach ($katalog->data_vendor_array_katalog as $key => $v)
                                     @php
+                                        // Default
                                         $fieldName = 'nama_' . $key;
                                         $fotoName = 'link_foto_' . $key;
-                                        if ($key === 'gaun_pengantin') {
+
+                                        // Semua kategori gaun pakai field dan foto yang sama
+                                        $kategoriGaun = [
+                                            'gaun_pengantin',
+                                            'gaun_pengantin_temu',
+                                            'gaun_pengantin_akad',
+                                            'gaun_pengantin_resepsi',
+                                        ];
+
+                                        if (in_array($key, $kategoriGaun)) {
                                             $fieldName = 'nama_gaun';
                                             $fotoName = 'link_foto_gaun';
                                         }
-
                                     @endphp
 
                                     <div class="accordion-item">
@@ -55,6 +72,7 @@
                                                 {{ ucwords(str_replace('_', ' ', $key)) }}
                                             </button>
                                         </h2>
+
                                         <div id="{{ $key }}" class="accordion-collapse collapse show"
                                             data-bs-parent="#accordionExample">
                                             <div class="accordion-body">
@@ -69,19 +87,18 @@
                                                         @endforeach
                                                     </select>
                                                 </div>
+
                                                 <div id="parent_foto_{{ $key }}"></div>
                                             </div>
                                         </div>
                                     </div>
                                 @endforeach
-
                             </div>
-
 
                         </div>
                         @if (Auth::check())
                             <div class="row">
-                                @if (Auth::user()->role !== 'admin')
+                                @if (Auth::user()->role !== 'admin' && Auth::user()->role !== 'super_admin')
                                     <div class="col-6">
                                         <button id="bookingNow" type="button" class="btn btn-success btn-lg w-100 mt-3">
                                             Booking Sekarang

@@ -202,7 +202,6 @@
                         url.searchParams.set('total_pembayaran', gross_amount)
                         url.searchParams.set('order_id', order_id)
                         window.history.replaceState({}, "", url)
-                        await webhookhandler(results);
                         updateDetailInformasi()
                         goToStep(3);
                     },
@@ -306,7 +305,6 @@
                                     url.searchParams.set('id_booking', res
                                         .id_booking)
                                     window.history.replaceState({}, "", url)
-                                    await webhookhandler(results);
                                     updateDetailInformasi()
                                     goToStep(3);
                                 },

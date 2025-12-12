@@ -73,8 +73,8 @@
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
             </div>
-            {{-- <div class="col-md-12 mb-3">
-                <label for="item_katalog" class="form-label">Item Katalog</label>
+            <div class="col-md-12 mb-3">
+                <label for="item_katalog" class="form-label">Item Katalog Statis</label>
                 @if ($type === 'add')
                     <div id="input-wrapper">
                         <div class="input-group mb-2">
@@ -105,11 +105,11 @@
                 @error('item_katalog')
                     <small class="text-danger">{{ $message }}</small>
                 @enderror
-            </div> --}}
+            </div>
             <div class="col-md-12 mb-3 bg-body-secondary rounded p-2">
                 <div id="dynamicForm"></div>
 
-                <button id="addField" type="button" class="btn btn-success btn-sm">Tambah Item</button>
+                <button id="addField" type="button" class="btn btn-success btn-sm">Tambah Item Dinamis</button>
             </div>
             <div class="col-md-12 mb-3">
                 <label for="deskripsi_katalog" class="form-label">Deskripsi Katalog</label>
