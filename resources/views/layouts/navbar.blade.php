@@ -44,8 +44,6 @@
                              class="{{ isCurrentUrl('user.portofolio.index') }}">Portfolio
                          </a>
                      </li>
-                     <li><a href="{{ route('user.tentang.index') }}"
-                             class="{{ isCurrentUrl('user.tentang.index') }}">Tentang Kami</a></li>
                      @if (!Auth::check())
                          <li><a class="button-link-navbar" href="{{ route('login') }}">Login</a></li>
                      @else

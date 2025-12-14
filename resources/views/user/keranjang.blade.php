@@ -110,9 +110,7 @@
                                 <label class="form-label">Pilih Pembayaran DP</label>
                                 <select id="dp-option" class="form-select">
                                     <option value="">-- Pilih DP --</option>
-                                    <option value="25">DP 25%</option>
                                     <option value="50">DP 50%</option>
-                                    <option value="75">DP 75%</option>
                                 </select>
                             </div>
 

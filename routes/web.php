@@ -72,7 +72,7 @@ Route::controller(Admin\AuthController::class)
 
 // Route Admin
 Route::prefix('admin')
-    ->middleware(['auth', 'role:admin,super_admin,member'])
+    ->middleware(['auth', 'role:admin,super_admin'])
     ->as('admin.')
     ->group(function () {
         Route::controller(Admin\BerandaController::class)
@@ -100,10 +100,11 @@ Route::prefix('admin')
             ->group(function () {
                 Route::get('/', 'index')->name('index');
                 Route::get('/tambah', 'create')->name('create');
-                Route::get('/{booking}', 'show')->name('show');
+                Route::get('/{transaksi}', 'show')->name('show');
                 Route::post('/', 'store')->name('store');
-                Route::post('/{booking}/update', 'update')->name('update');
-                Route::get('/{booking}/destroy', 'destroy')->name('destroy');
+                Route::post('/{transaksi}/update', 'update')->name('update');
+                Route::get('/{transaksi}/destroy', 'destroy')->name('destroy');
+                Route::post('/update/status_transaksi', 'updateStatusTransaksi')->name('update.status_transaksi');
             });
 
         Route::controller(Admin\CustomerController::class)

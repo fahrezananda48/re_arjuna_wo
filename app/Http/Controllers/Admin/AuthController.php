@@ -47,6 +47,9 @@ class AuthController extends Controller
         if ($user->role === 'admin') {
             return $this->toWithAlert('admin.beranda.index', [], 'success', "Selamat Datang {$user->nama}");
         }
+        if ($user->role === 'super_admin') {
+            return $this->toWithAlert('admin.beranda.index', [], 'success', "Selamat Datang {$user->nama}");
+        }
         return $this->toWithAlert('user.beranda.index', [], 'success', "Selamat Datang {$user->nama}");
     }
 

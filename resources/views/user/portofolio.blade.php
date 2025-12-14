@@ -16,14 +16,20 @@
                 <div class="portfolio-filters-wrapper" data-aos="fade-up" data-aos-delay="100">
                     <ul class="portfolio-filters isotope-filters">
                         <li data-filter=".filter-mua" class="filter-active">MUA</li>
-                        <li data-filter=".filter-dekor">DEKOR</li>
+                        <li data-filter=".filter-dekorasi">DEKOR</li>
                     </ul>
                 </div>
 
                 <div class="row gy-4 portfolio-grid isotope-container" data-aos="fade-up" data-aos-delay="200">
 
                     @foreach ($portofolios as $item)
-                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-mua">
+                        @php
+                            $filterKey = strtolower($item['judul_portofolio']);
+                            $filterKey = str_replace(' ', '-', $filterKey);
+                            $filterKey = explode('-', $filterKey);
+                            $filterKey = $filterKey[0];
+                        @endphp
+                        <div class="col-lg-4 col-md-6 portfolio-item isotope-item filter-{{ $filterKey }}">
                             <div class="portfolio-card">
                                 <div class="image-container">
                                     <img src="{{ $item->link_foto_portofolio }}" class="img-fluid"

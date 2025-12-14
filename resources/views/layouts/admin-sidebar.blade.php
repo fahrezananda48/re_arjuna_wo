@@ -40,12 +40,12 @@
                              <span class="pc-mtext">Data Booking</span>
                          </a>
                      </li>
-                     <li class="pc-item {{ Route::is('admin.laporan.*') ? 'active' : '' }}">
+                     {{-- <li class="pc-item {{ Route::is('admin.laporan.*') ? 'active' : '' }}">
                          <a href="{{ route('admin.laporan.index') }}" class="pc-link">
                              <span class="pc-micon"><i class="ph ph-notepad"></i></span>
                              <span class="pc-mtext">Laporan</span>
                          </a>
-                     </li>
+                     </li> --}}
                      <li class="pc-item {{ Route::is('admin.portofolio.*') ? 'active' : '' }}">
                          <a href="{{ route('admin.portofolio.index') }}" class="pc-link">
                              <span class="pc-micon"><i class="ph ph-images"></i></span>
